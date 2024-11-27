@@ -1,34 +1,3 @@
-'''from openai import OpenAI
-import os
-import time
-os.system('clear')
-client = OpenAI(
-  base_url = "https://integrate.api.nvidia.com/v1",
-  api_key = "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"
-)
-while True:
-    try:
-        promte = input("\nenter Prompt : ")
-        completion = client.chat.completions.create(
-        model="nvidia/llama-3.1-nemotron-70b-instruct",
-        messages=[{"role":"user","content":f"{promte}"}],
-        temperature=0.5,
-        top_p=1,
-        max_tokens=1024,
-        stream=True
-        )
-
-        for chunk in completion:
-            if chunk.choices[0].delta.content is not None:
-                print(chunk.choices[0].delta.content, end="")
-    except(KeyboardInterrupt):
-        print('\nExiting...')
-        time.sleep(1)
-        os.system('clear')
-        break
-'''
-
-
 import streamlit as st
 from openai import OpenAI
 import os
@@ -36,11 +5,12 @@ import time
 
 # Set page config for wide layout
 st.set_page_config(layout="wide")
+api = st.text_area("enter API Key :",height = 50)
 
 # Initialize OpenAI client
 client = OpenAI(
     base_url="https://integrate.api.nvidia.com/v1",
-    api_key="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"  # Replace with your actual API key
+    api_key=api  # Replace with your actual API key
 )
 
 # Streamlit UI elements
