@@ -5,7 +5,7 @@ import time
 
 # Set page config for wide layout
 st.set_page_config(layout="wide")
-api = st.text_area("enter API Key :",height = 50)
+api = st.text_area("enter API Key :",height = 68)
 
 # Initialize OpenAI client
 client = OpenAI(
